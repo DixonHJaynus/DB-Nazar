@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB-Nazar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="nazar-container" class="hidden">
+        <!-- Background Overlay -->
+        <div class="overlay"></div>
+
+        <!-- Main UI Panel -->
+        <div class="nazar-panel">
+            <!-- Header -->
+            <div class="nazar-header">
+                <div class="header-decoration left">✦</div>
+                <div class="header-content">
+                    <h1 id="shop-title">Madam Nazar</h1>
+                    <p id="shop-subtitle">Travelling Fortune Teller & Collector's Merchant</p>
+                </div>
+                <div class="header-decoration right">✦</div>
+                <button class="close-btn" id="close-btn">✕</button>
+            </div>
+
+            <!-- Greeting -->
+            <div class="greeting-bar" id="greeting-bar">
+                <span class="greeting-icon">🔮</span>
+                <p id="greeting-text"></p>
+            </div>
+
+            <!-- Fortune Display (hidden by default) -->
+            <div class="fortune-display hidden" id="fortune-display">
+                <div class="fortune-card">
+                    <div class="fortune-decoration">☽ ★ ☾</div>
+                    <p id="fortune-text"></p>
+                    <div class="fortune-decoration">✦ ✦ ✦</div>
+                </div>
+                <button class="fortune-dismiss" id="fortune-dismiss">The spirits have spoken</button>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-nav" id="tab-nav">
+                <button class="tab-btn active" data-tab="buy">
+                    <span class="tab-icon">🛒</span> Buy
+                </button>
+                <button class="tab-btn" data-tab="sell">
+                    <span class="tab-icon">💰</span> Sell
+                </button>
+                <button class="tab-btn" data-tab="collections">
+                    <span class="tab-icon">📦</span> Collections
+                </button>
+                <button class="tab-btn" data-tab="fortune">
+                    <span class="tab-icon">🔮</span> Fortune
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area" id="content-area">
+
+                <!-- BUY TAB -->
+                <div class="tab-content active" id="tab-buy">
+                    <!-- Collector Bag Banner (shown if player doesn't have it) -->
+                    <div class="collector-bag-banner hidden" id="collector-bag-banner">
+                        <div class="bag-info">
+                            <h3>🎒 Collector's Bag</h3>
+                            <p id="bag-description">Essential storage for collectibles. Required to begin the Collector path.</p>
+                        </div>
+                        <button class="buy-bag-btn" id="buy-bag-btn">
+                            Purchase - <span id="bag-price">$25.00</span>
+                        </button>
+                    </div>
+
+                    <!-- Category Buttons -->
+                    <div class="category-nav" id="category-nav"></div>
+
+                    <!-- Items Grid -->
+                    <div class="items-grid" id="buy-items-grid"></div>
+                </div>
+
+                <!-- SELL TAB -->
+                <div class="tab-content" id="tab-sell">
+                    <div class="sell-header">
+                        <h3>Sell Individual Items</h3>
+                        <p>Sell your collectibles and curiosities to Madam Nazar.</p>
+                    </div>
+                    <div class="items-grid" id="sell-items-grid"></div>
+                    <div class="empty-state hidden" id="sell-empty">
+                        <span class="empty-icon">📭</span>
+                        <p>You don't have any collectibles to sell.</p>
+                    </div>
+                </div>
+
+                <!-- COLLECTIONS TAB -->
+                <div class="tab-content" id="tab-collections">
+                    <div class="sell-header">
+                        <h3>Complete Collections</h3>
+                        <p>Sell complete sets for a bonus reward!</p>
+                    </div>
+                    <div class="collections-list" id="collections-list"></div>
+                </div>
+
+                <!-- FORTUNE TAB -->
+                <div class="tab-content" id="tab-fortune">
+                    <div class="fortune-section">
+                        <div class="fortune-intro">
+                            <div class="crystal-ball">🔮</div>
+                            <h3>Fortune Reading</h3>
+                            <p>Let Madam Nazar peer into the beyond and reveal what the spirits have in store for you...</p>
+                            <div class="fortune-cost" id="fortune-cost">
+                                Cost: <span>$5.00</span>
+                            </div>
+                            <button class="fortune-btn" id="fortune-btn">
+                                <span class="btn-icon">✨</span> Request a Reading
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="nazar-footer">
+                <span class="footer-decoration">⚜ DB-Nazar ⚜</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
