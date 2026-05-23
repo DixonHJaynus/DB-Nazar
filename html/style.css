@@ -1,0 +1,931 @@
+/* ============================================================================
+   DB-NAZAR - Madam Nazar UI Styles
+   ============================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    overflow: hidden;
+    user-select: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================================================
+   OVERLAY & CONTAINER
+   ============================================================================ */
+
+#nazar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
+    backdrop-filter: blur(3px);
+}
+
+/* ============================================================================
+   MAIN PANEL
+   ============================================================================ */
+
+.nazar-panel {
+    position: relative;
+    width: 750px;
+    max-height: 85vh;
+    background: linear-gradient(135deg, #1a0f2e 0%, #16082b 30%, #0d0618 70%, #1a0f2e 100%);
+    border: 2px solid #c9a84c;
+    border-radius: 8px;
+    box-shadow:
+        0 0 40px rgba(201, 168, 76, 0.3),
+        0 0 80px rgba(139, 90, 43, 0.15),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: panelAppear 0.5s ease-out;
+}
+
+@keyframes panelAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.nazar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 25px 15px;
+    background: linear-gradient(180deg, rgba(201, 168, 76, 0.15) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    position: relative;
+}
+
+.header-decoration {
+    font-size: 24px;
+    color: #c9a84c;
+    opacity: 0.7;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.header-decoration.right {
+    animation-delay: 1.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.header-content {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.header-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #c9a84c;
+    text-shadow: 0 2px 10px rgba(201, 168, 76, 0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.header-content p {
+    font-size: 13px;
+    color: #a89060;
+    margin-top: 4px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 50%;
+    color: #c9a84c;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: #c9a84c;
+    transform: rotate(90deg);
+}
+
+/* ============================================================================
+   GREETING BAR
+   ============================================================================ */
+
+.greeting-bar {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    background: rgba(201, 168, 76, 0.05);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.greeting-icon {
+    font-size: 20px;
+    margin-right: 12px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.greeting-bar p {
+    font-size: 14px;
+    color: #d4c4a0;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* ============================================================================
+   FORTUNE DISPLAY
+   ============================================================================ */
+
+.fortune-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 6, 24, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: fortuneFadeIn 0.8s ease-out;
+}
+
+@keyframes fortuneFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fortune-card {
+    max-width: 500px;
+    padding: 40px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, rgba(139, 90, 43, 0.05) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+}
+
+.fortune-decoration {
+    font-size: 20px;
+    color: #c9a84c;
+    letter-spacing: 10px;
+    margin: 15px 0;
+    opacity: 0.7;
+}
+
+#fortune-text {
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    color: #d4c4a0;
+    line-height: 1.6;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+.fortune-dismiss {
+    margin-top: 25px;
+    padding: 10px 30px;
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 4px;
+    color: #c9a84c;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.fortune-dismiss:hover {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: #c9a84c;
+}
+
+/* ============================================================================
+   TAB NAVIGATION
+   ============================================================================ */
+
+.tab-nav {
+    display: flex;
+    padding: 0 15px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #7a6a4f;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    color: #c9a84c;
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.tab-btn.active {
+    color: #c9a84c;
+    border-bottom-color: #c9a84c;
+    background: rgba(201, 168, 76, 0.08);
+}
+
+.tab-icon {
+    font-size: 16px;
+}
+
+/* ============================================================================
+   CONTENT AREA
+   ============================================================================ */
+
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 20px;
+    min-height: 350px;
+    max-height: 55vh;
+}
+
+.content-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content-area::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.content-area::-webkit-scrollbar-thumb {
+    background: rgba(201, 168, 76, 0.4);
+    border-radius: 3px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 168, 76, 0.6);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: tabFadeIn 0.3s ease-out;
+}
+
+@keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================================
+   COLLECTOR BAG BANNER
+   ============================================================================ */
+
+.collector-bag-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(139, 90, 43, 0.08) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.1);
+}
+
+.bag-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: #c9a84c;
+    margin-bottom: 4px;
+}
+
+.bag-info p {
+    font-size: 12px;
+    color: #a89060;
+    font-style: italic;
+}
+
+.buy-bag-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #c9a84c 0%, #a8853a 100%);
+    border: none;
+    border-radius: 4px;
+    color: #1a0f2e;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.buy-bag-btn:hover {
+    background: linear-gradient(135deg, #dbb85c 0%, #c99a44 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
+}
+
+/* ============================================================================
+   CATEGORY NAVIGATION
+   ============================================================================ */
+
+.category-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 8px 16px;
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    color: #a89060;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.category-btn:hover {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: rgba(201, 168, 76, 0.4);
+    color: #c9a84c;
+}
+
+.category-btn.active {
+    background: rgba(201, 168, 76, 0.2);
+    border-color: #c9a84c;
+    color: #c9a84c;
+}
+
+/* ============================================================================
+   ITEMS GRID
+   ============================================================================ */
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.item-card {
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 6px;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item-card:hover {
+    background: rgba(201, 168, 76, 0.08);
+    border-color: rgba(201, 168, 76, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.item-card:hover::before {
+    opacity: 1;
+}
+
+.item-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.item-card.locked:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.item-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #d4c4a0;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.item-description {
+    font-size: 12px;
+    color: #7a6a4f;
+    font-style: italic;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.item-price {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    color: #c9a84c;
+    font-weight: 700;
+}
+
+.item-price.sell-price {
+    color: #7cc97a;
+}
+
+.item-requirement {
+    font-size: 11px;
+    color: #c94c4c;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.item-requirement.met {
+    color: #7cc97a;
+}
+
+.item-action-btn {
+    margin-top: 8px;
+    padding: 6px 14px;
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 3px;
+    color: #c9a84c;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.item-action-btn:hover {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: #c9a84c;
+}
+
+.item-action-btn.sell-btn {
+    color: #7cc97a;
+    border-color: rgba(124, 201, 122, 0.3);
+    background: rgba(124, 201, 122, 0.1);
+}
+
+.item-action-btn.sell-btn:hover {
+    background: rgba(124, 201, 122, 0.2);
+    border-color: #7cc97a;
+}
+
+/* ============================================================================
+   SELL TAB
+   ============================================================================ */
+
+.sell-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.sell-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: #c9a84c;
+    margin-bottom: 4px;
+}
+
+.sell-header p {
+    font-size: 12px;
+    color: #7a6a4f;
+    font-style: italic;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7a6a4f;
+}
+
+.empty-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* ============================================================================
+   COLLECTIONS TAB
+   ============================================================================ */
+
+.collections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.collection-card {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.collection-card:hover {
+    border-color: rgba(201, 168, 76, 0.35);
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.collection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.collection-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.collection-title h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    color: #c9a84c;
+}
+
+.collection-title .collection-icon {
+    font-size: 18px;
+}
+
+.collection-bonus {
+    font-size: 12px;
+    color: #7cc97a;
+    background: rgba(124, 201, 122, 0.1);
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(124, 201, 122, 0.2);
+}
+
+.collection-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.collection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.collection-item .item-label {
+    color: #a89060;
+}
+
+.collection-item .item-status {
+    font-size: 14px;
+}
+
+.collection-item .item-status.has-item {
+    color: #7cc97a;
+}
+
+.collection-item .item-status.missing-item {
+    color: #c94c4c;
+}
+
+.collection-item .item-sell-price {
+    color: #7a6a4f;
+    font-size: 11px;
+    margin-left: 8px;
+}
+
+.collection-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.collection-total {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #d4c4a0;
+}
+
+.collection-total .bonus-amount {
+    color: #7cc97a;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.sell-collection-btn {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, rgba(124, 201, 122, 0.2) 0%, rgba(100, 180, 100, 0.1) 100%);
+    border: 1px solid rgba(124, 201, 122, 0.4);
+    border-radius: 4px;
+    color: #7cc97a;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sell-collection-btn:hover {
+    background: linear-gradient(135deg, rgba(124, 201, 122, 0.3) 0%, rgba(100, 180, 100, 0.2) 100%);
+    border-color: #7cc97a;
+    transform: translateY(-1px);
+}
+
+.sell-collection-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.sell-collection-btn:disabled:hover {
+    transform: none;
+}
+
+.collection-progress {
+    font-size: 12px;
+    color: #7a6a4f;
+}
+
+.collection-progress .progress-count {
+    color: #c9a84c;
+    font-weight: 600;
+}
+
+/* ============================================================================
+   FORTUNE TAB
+   ============================================================================ */
+
+.fortune-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.fortune-intro {
+    text-align: center;
+    max-width: 400px;
+}
+
+.crystal-ball {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: float 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+.fortune-intro h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: #c9a84c;
+    margin-bottom: 10px;
+}
+
+.fortune-intro p {
+    font-size: 14px;
+    color: #a89060;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.fortune-cost {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #7a6a4f;
+    margin-bottom: 20px;
+}
+
+.fortune-cost span {
+    color: #c9a84c;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.fortune-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.2) 0%, rgba(139, 90, 43, 0.15) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    border-radius: 6px;
+    color: #c9a84c;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 1px;
+}
+
+.fortune-btn:hover {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.35) 0%, rgba(139, 90, 43, 0.25) 100%);
+    border-color: #c9a84c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+}
+
+.fortune-btn .btn-icon {
+    font-size: 18px;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+.nazar-footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.footer-decoration {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: rgba(201, 168, 76, 0.4);
+    letter-spacing: 3px;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 800px) {
+    .nazar-panel {
+        width: 95vw;
+    }
+
+    .items-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collector-bag-banner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(201, 168, 76, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.4); }
+}
+
+.item-card.highlight {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Confirmation tooltip */
+.confirm-tooltip {
+    position: fixed;
+    background: linear-gradient(135deg, #1a0f2e, #0d0618);
+    border: 1px solid #c9a84c;
+    border-radius: 6px;
+    padding: 15px 20px;
+    z-index: 10000;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+    text-align: center;
+    min-width: 250px;
+}
+
+.confirm-tooltip p {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: #d4c4a0;
+    margin-bottom: 12px;
+}
+
+.confirm-tooltip .confirm-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.confirm-tooltip .confirm-yes,
+.confirm-tooltip .confirm-no {
+    padding: 6px 20px;
+    border-radius: 3px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s;
+}
+
+.confirm-tooltip .confirm-yes {
+    background: rgba(124, 201, 122, 0.2);
+    border-color: rgba(124, 201, 122, 0.4);
+    color: #7cc97a;
+}
+
+.confirm-tooltip .confirm-yes:hover {
+    background: rgba(124, 201, 122, 0.3);
+}
+
+.confirm-tooltip .confirm-no {
+    background: rgba(201, 76, 76, 0.2);
+    border-color: rgba(201, 76, 76, 0.4);
+    color: #c94c4c;
+}
+
+.confirm-tooltip .confirm-no:hover {
+    background: rgba(201, 76, 76, 0.3);
+}
